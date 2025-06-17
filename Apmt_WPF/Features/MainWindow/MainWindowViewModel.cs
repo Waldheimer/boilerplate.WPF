@@ -14,6 +14,7 @@ namespace Apmt_WPF.Features.MainWindow
         private readonly NavigationManager _navigationManager;
 
         public ObservableRecipient? CurrentViewModel => _navigationManager.CurrentViewModel;
+
         public MainWindowViewModel(NavigationManager navigationManager, 
             NavigationService<DashboardViewModel> navigationServiceDashboard, 
             NavigationService<AppointmentsViewModel> navigationServiceAppointments)
@@ -30,19 +31,14 @@ namespace Apmt_WPF.Features.MainWindow
         }
 
         [RelayCommand]
-        public void Navigate(string target)
+        public void NavigateDashboard()
         {
-            switch (target) 
-            {
-                case "dashboard":
-                    this._navigationServiceDashboard.Navigate();
-                    break;
-                case "appointments":
-                    this._navigationServiceAppointments.Navigate();
-                    break;
-                default:
-                    break;
-            }
+            this._navigationServiceDashboard.Navigate();
+        }
+        [RelayCommand]
+        public void NavigateAppointments()
+        {
+            this._navigationServiceAppointments.Navigate();
         }
     }
 }

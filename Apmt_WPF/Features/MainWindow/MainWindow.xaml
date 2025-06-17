@@ -21,11 +21,10 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <StackPanel Orientation="Horizontal">
-            <Button Command="{Binding NavigateCommand}" CommandParameter="dashboard">Dashboard</Button>
-            <Button Command="{Binding NavigateCommand}" CommandParameter="appointments">Appointments</Button>
+            <Button Command="{Binding NavigateDashboardCommand}">Dashboard</Button>
+            <Button Command="{Binding NavigateAppointmentsCommand}">Appointments</Button>
         </StackPanel>
         <ContentControl
-            x:Name="LeftContent"
             Grid.Row="1"
             Grid.Column="0"
             Content="{Binding CurrentViewModel}">
@@ -38,10 +37,5 @@
                 </DataTemplate>
             </ContentControl.Resources>
         </ContentControl>
-        <ContentControl
-            x:Name="RightContent"
-            Grid.Row="1"
-            Grid.Column="1"
-            Content="{Binding NavigationService.CurrentView}" />
     </Grid>
 </Window>
