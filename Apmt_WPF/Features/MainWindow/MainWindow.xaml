@@ -11,6 +11,14 @@
     Width="800"
     Height="450"
     mc:Ignorable="d">
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type dashboard:DashboardViewModel}">
+            <dashboard:DashboardView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type appointments:AppointmentsViewModel}">
+            <appointments:AppointmentsView />
+        </DataTemplate>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="25" />
@@ -21,21 +29,19 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <StackPanel Orientation="Horizontal">
-            <Button Command="{Binding NavigateDashboardCommand}">Dashboard</Button>
-            <Button Command="{Binding NavigateAppointmentsCommand}">Appointments</Button>
+            <Button Command="{Binding NavigateDashboardCommand}" CommandParameter="LeftContent">Dashboard</Button>
+            <Button Command="{Binding NavigateAppointmentsCommand}" CommandParameter="RightContent">Appointments</Button>
+            <Button Command="{Binding TestApiCommand}">Test API</Button>
         </StackPanel>
         <ContentControl
+            x:Name="leftContent"
             Grid.Row="1"
             Grid.Column="0"
-            Content="{Binding CurrentViewModel}">
-            <ContentControl.Resources>
-                <DataTemplate DataType="{x:Type dashboard:DashboardViewModel}">
-                    <dashboard:DashboardView />
-                </DataTemplate>
-                <DataTemplate DataType="{x:Type appointments:AppointmentsViewModel}">
-                    <appointments:AppointmentsView />
-                </DataTemplate>
-            </ContentControl.Resources>
-        </ContentControl>
+            Content="{Binding CurrentViewModel}" />
+        <ContentControl
+            x:Name="rightContent"
+            Grid.Row="1"
+            Grid.Column="1"
+            Content="{Binding CurrentViewModel}" />
     </Grid>
 </Window>

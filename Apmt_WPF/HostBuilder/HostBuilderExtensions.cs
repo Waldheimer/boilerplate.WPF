@@ -1,6 +1,7 @@
 ﻿using Apmt_WPF.Features.Appointments;
 using Apmt_WPF.Features.Dashboard;
 using Apmt_WPF.Features.MainWindow;
+using Apmt_WPF.Features.Users;
 using Apmt_WPF.Navigation;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Microsoft.Extensions.DependencyInjection;
@@ -47,8 +48,16 @@ public static class HostBuilderExtensions
     {
         hostBuilder.ConfigureServices(services =>
         {
-            services.AddSingleton<NavigationManager>();
+            services.AddScoped<NavigationManager>();
         });
+        return hostBuilder;
+    }
+    //  *****************************************************************************
+    //  *****   Registration of all ContextClasses for DI   *************************
+    //  *****************************************************************************
+    public static IHostBuilder RegisterContexts(this IHostBuilder hostBuilder)
+    {
+        
         return hostBuilder;
     }
     //  *****************************************************************************
@@ -59,7 +68,8 @@ public static class HostBuilderExtensions
         hostBuilder.ConfigureServices(services =>
         {
             services.AddSingleton<NavigationService<DashboardViewModel>>();
-            services.AddSingleton<NavigationService<AppointmentsViewModel>>();  
+            services.AddSingleton<NavigationService<AppointmentsViewModel>>();
+            services.AddSingleton<UserService>();
         });
         return hostBuilder;
     }

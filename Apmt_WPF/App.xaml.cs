@@ -26,13 +26,14 @@ namespace Apmt_WPF
                 .RegisterManagers()
                 .RegisterFactoryFunctions()
                 .ConfigureServices(services =>
-            {
-                services.AddSingleton<MainWindowViewModel>();
-                services.AddSingleton<MainWindow>(s => new MainWindow()
                 {
-                    DataContext = s.GetRequiredService<MainWindowViewModel>()
-                });
-            }).Build();
+                    services.AddSingleton<MainWindowViewModel>();
+                    services.AddSingleton<MainWindow>(s => new MainWindow()
+                        {
+                            DataContext = s.GetRequiredService<MainWindowViewModel>()
+                        });
+                }).Build();
+            
         }
 
         //  *****************************************************************************

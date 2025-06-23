@@ -8,6 +8,7 @@ namespace Apmt_WPF.Navigation;
 //  *********************************************************************************
 public class NavigationManager
 {
+
     //  **********************
     //  Property for the ViewModel that is the current Navigation-Target
     //  **********************
