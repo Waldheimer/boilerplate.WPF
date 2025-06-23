@@ -66,14 +66,7 @@ namespace Apmt_WPF.Features.MainWindow
         [RelayCommand]
         private async Task TestApi()
         {
-            var input = new UserRegisterDto
-            {
-                username = "waldheimer",
-                email = "whm@whm.com",
-                password = "whm20060!",
-                passwordConfirmation = "whm20060!"
-            };
-            await _userService.RegisterUserAsync(input);
+            //await _userService.RegisterUserAsync(input);
         }
     }
 }
